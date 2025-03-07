@@ -1,0 +1,15 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11433:11434"
+
+  frontend:
+    image: jakobhoeg/nextjs-ollama-ui:latest
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+
